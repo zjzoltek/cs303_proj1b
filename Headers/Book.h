@@ -4,7 +4,7 @@
 #include "Date.h"
 #include "Employee.h"
 #include "StringTokenizer.h"
-#include "priority_queue.h"
+#include "PriorityQueue.h"
 #include <string>
 
 class Book
@@ -14,7 +14,7 @@ private:
 	bool _isArchived;
 
 	Date _circulationStartDate, _circulationEndDate;
-	priority_queue<Employee> _empQueue;
+	PriorityQueue<Employee> _empQueue;
 
 public:
 	Book(std::string name);
