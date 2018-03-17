@@ -23,6 +23,22 @@ Employee Book::frontEmployee() {
     return _empQueue.front();
 
 }
+
+void Book::setArchived(bool value) {
+    _isArchived = value;
+}
+bool Book::isArchived() {
+    return _isArchived;
+}
+
+Date Book::getStartDate() {
+    return _circulationStartDate;
+}
+Date Book::getEndDate() {
+    return _circulationEndDate;
+}
+
+
 bool Book::operator==(const Book &rhs) const {
     return (_name == rhs._name);
 
