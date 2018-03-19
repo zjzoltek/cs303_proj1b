@@ -24,6 +24,12 @@ public:
 
 	Employee frontEmployee();
 
+	void setArchived(bool value);
+	bool isArchived();
+
+	Date getEndDate();
+	Date getStartDate();
+
 	bool operator==(const Book& rhs) const;
 };
 
