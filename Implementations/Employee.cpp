@@ -4,80 +4,75 @@
 
 #include "../Headers/Employee.h"
 
-
-Employee::Employee(std::string name) {
-    this->_name = name;
-    this->_waitTime = 0;
-    this->_totalRetainTime = 0;
-    this->_holdingBook = false;
-    this->_book = nullptr;
+Employee::Employee(std::string name, uint32_t id, std::string& desiredBook)
+{
+	this->_empName = name;
+	this->_waitTime = 0;
+	this->_totalRetainTime = 0;
+	this->_holdingBook = false;
+	this->_desiredBook = desiredBook;
+	this->_id = id;
 }
 
-string Employee::getEmployeeName() {
-    return this->std::_name;
+std::string Employee::getEmployeeName()
+{
+	return this->_empName;
 }
 
 //Return wait time
-int Employee::getWaitTime() {
-    return this->_waitTime;
+uint32_t Employee::getWaitTime()
+{
+	return this->_waitTime;
 }
 
 //Retrun total time employee has retained a book
-int Employee::getTotalRetainTime() {
-    return this->_totalRetainTime;
+uint32_t Employee::getTotalRetainTime()
+{
+	return this->_totalRetainTime;
+}
+
+uint32_t Employee::getID()
+{
+	return _id;
 }
 
 //Return is emyploee is holding book
-bool Employee::isHoldingBook() {
-    return this->_holdingBook;
+bool Employee::isHoldingBook()
+{
+	return this->_holdingBook;
 }
-
-//Return book employee is holding
-Book Employee::getBook() {
-    return this->*_book;
-}
-
 
 //Set name of employee
-void Employee::setEmployeeName(std::string _name) {
-    this->std::_name = _name;
+void Employee::setEmployeeName(std::string& _name)
+{
+	this->_empName = _name;
 }
 
 //Set time employee has to wait
-void Employee::setWaitTime(int time) {
-    if(time < 0){
-        this->_waitTime = 0;
-    }
-    else{
-        this->_waitTime = time;
-    }
+void Employee::setWaitTime(int32_t time)
+{
+	this->_waitTime = time;
 }
 
 //Set time employee how long retained book
-void Employee::setTotalRetainTime(int time) {
-    if(time < 0){
-        this->_totalRetainTime = 0;
-    }
-    else
-        this->_totalRetainTime = time;
-    }
+void Employee::setTotalRetainTime(int32_t time)
+{
+	this->_totalRetainTime = time;
 }
 
 //Set if a employee is holding a book or not
-void Employee::setHoldingBook(bool holdingBook) {
-    this->_holdingBook = holdingBook;
+void Employee::setHoldingBook(bool holdingBook)
+{
+	this->_holdingBook = holdingBook;
 }
 
 //Set name of book emyployee requests
-void Employee::requestBook(std::string nameOfBook) {
-    this->_bookName = nameOfBook;
+void Employee::requestBook(std::string& nameOfBook)
+{
+	this->_desiredBook = nameOfBook;
 }
 
-
-
-
-
-
-
-
-
+bool Employee::operator<(const Employee& rhs) const
+{
+	return (_totalRetainTime - _waitTime) < (rhs._totalRetainTime - rhs._waitTime);
+}

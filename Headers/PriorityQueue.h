@@ -1,26 +1,27 @@
-#ifndef PriorityQueue_H
-#define PriorityQueue_H
+#pragma once
 
-#include <vector>
+template<class _T, class _Comp = std::less<typename _T>>
+class PriorityQueue;
+
+#include <list>
 #include <algorithm>
 #include <functional>
-template<class _T, class _Comp = std::less<typename _T>>
 
+template<class _T, class _Comp>
 class PriorityQueue
 {
 private:
-	std::vector<_T> _container;
+	std::list<_T> _container;
 	_Comp _comparator;
 
 	void _sort_internal_heap();
-
 public:
 	PriorityQueue();
 	PriorityQueue(std::function <bool(_T, _T)> comparator);
-	PriorityQueue(std::vector<_T>& container, std::function <bool(_T, _T)> comparator);
-	PriorityQueue(std::vector<_T>&& container, std::function <bool(_T, _T)> comparator);
-	PriorityQueue(std::vector<_T>&& container);
-	PriorityQueue(std::vector<_T>& container);
+	PriorityQueue(std::list<_T>& container, std::function <bool(_T, _T)> comparator);
+	PriorityQueue(std::list<_T>&& container, std::function <bool(_T, _T)> comparator);
+	PriorityQueue(std::list<_T>&& container);
+	PriorityQueue(std::list<_T>& container);
 
 	void push(_T value);
 
@@ -32,8 +33,3 @@ public:
 
 	_T front();
 };
-
-#endif
-
-
-
