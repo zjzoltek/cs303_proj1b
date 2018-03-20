@@ -1,11 +1,13 @@
-#ifndef BOOK_H
-#define BOOK_H
+#pragma once
 
+class Book;
+
+#include <map>
+#include <string>
+#include <cstdint>
 #include "Date.h"
 #include "Employee.h"
-#include "StringTokenizer.h"
 #include "PriorityQueue.h"
-#include <string>
 
 class Book
 {
@@ -14,23 +16,23 @@ private:
 	bool _isArchived;
 
 	Date _circulationStartDate, _circulationEndDate;
-	PriorityQueue<Employee> _empQueue;
 
+	PriorityQueue<Employee> _empQueue;
+	std::map<uint32_t, uint32_t> _retainTimes;
 public:
 	Book(std::string name);
 
-	void pushEmployee(Employee e);
+	void pushEmployee(Employee& e);
 	void popEmployee();
 
 	Employee frontEmployee();
 
-	void setArchived(bool value);
 	bool isArchived();
 
 	Date getEndDate();
 	Date getStartDate();
+	std::string getName();
 
 	bool operator==(const Book& rhs) const;
+	bool operator<(const Book& rhs) const;
 };
-
-#endif

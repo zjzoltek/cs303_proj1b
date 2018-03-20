@@ -1,10 +1,20 @@
-#ifndef LIBRARY_H
-#define LIBRARY_H
+#pragma once
+
+class Library;
 
 #include "Headers\Book.h"
 #include "Headers\Employee.h"
 #include "Headers\PriorityQueue.h"
 
+#include <set>
+#include <fstream>
+#include <iostream>
+#include <cstdint>
+#include <cassert>
+#include <chrono>
+#include <thread>
+
+#define TICK_LENGTH std::chrono::seconds(1) 
 /*
 - System inits and grabs book
 - Employees init, add themselves to the system
@@ -22,7 +32,18 @@
 
 class Library
 {
+private:
+	std::set<Employee> _employees;
+	std::set<Book> _books;
+public:
+	void addEmployee(Employee e);
+	void addEmployee(std::string& name, uint32_t id, std::string& desiredName);
+	void addBook(Book b);
+	void addBook(std::string name);
 
+
+	void readEmployeesFromFile(std::string filename);
+	void readBooksFromFile(std::string& filename);
+	
+	void start();
 };
-
-#endif

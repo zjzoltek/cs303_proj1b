@@ -13,44 +13,44 @@ PriorityQueue<_T, _Comp>::PriorityQueue() : _comparator(), _container()
 template<class _T, class _Comp = std::less<typename _T>>
 PriorityQueue<_T, _Comp>::PriorityQueue(std::function <bool(_T, _T)> comparator) : _comparator(comparator)
 {
-	std::make_heap(_container.begin(), _container.end());
+	std::make_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
-PriorityQueue<_T, _Comp>::PriorityQueue(std::vector<_T>& container) : _container(container), _comparator()
+PriorityQueue<_T, _Comp>::PriorityQueue(std::list<_T>& container) : _container(container), _comparator()
 {
-	std::make_heap(_container.begin(), _container.end());
+	std::make_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
-PriorityQueue<_T, _Comp>::PriorityQueue(std::vector<_T>&& container) : _container(container), _comparator()
+PriorityQueue<_T, _Comp>::PriorityQueue(std::list<_T>&& container) : _container(container), _comparator()
 {
-	std::make_heap(_container.begin(), _container.end());
+	std::make_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
-PriorityQueue<_T, _Comp>::PriorityQueue(std::vector<_T>& container, std::function<bool(_T, _T)> comparator) : _container(container), _comparator(_comparator)
+PriorityQueue<_T, _Comp>::PriorityQueue(std::list<_T>& container, std::function<bool(_T, _T)> comparator) : _container(container), _comparator(_comparator)
 {
-	std::make_heap(_container.begin(), _container.end());
+	std::make_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
-PriorityQueue<_T, _Comp>::PriorityQueue(std::vector<_T>&& container, std::function<bool(_T, _T)> comparator) : _container(std::move(container)), _comparator(comparator)
+PriorityQueue<_T, _Comp>::PriorityQueue(std::list<_T>&& container, std::function<bool(_T, _T)> comparator) : _container(std::move(container)), _comparator(comparator)
 {
-	std::make_heap(_container.begin(), _container.end());
+	std::make_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
 inline void PriorityQueue<_T, _Comp>::push(_T value)
 {
 	_container.push_back(std::move(_T));
-	std::push_heap(_container.begin(), _container.end());
+	std::push_heap(_container.begin(), _container.end(), _comparator);
 }
 
 template<class _T, class _Comp = std::less<typename _T>>
 inline void PriorityQueue<_T, _Comp>::pop()
 {
-	std::pop_heap(_container.begin(), _container.end());
+	std::pop_heap(_container.begin(), _container.end(), _comparator);
 	_container.pop_back();
 }
 

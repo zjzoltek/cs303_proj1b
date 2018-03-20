@@ -4,7 +4,6 @@
 
 int getNumber(int low, int high, std::string message);
 
-
 /** The string_tokenizer class splits a string into a sequence of subtrings,
 called tokens, separated by delimeters.
 */
@@ -17,14 +16,16 @@ public:
 	this parameter is omitted, a space character is assumed.
 	*/
 	String_Tokenizer(std::string source, std::string delim = " ") :
-		the_source(source), the_delim(delim), start(0), end(0) {
+		the_source(source), the_delim(delim), start(0), end(0)
+	{
 		find_next();
 	}
 
 	/** Determine if there are more tokens
 	@return true if there are more tokens
 	*/
-	bool has_more_tokens() {
+	bool has_more_tokens()
+	{
 		return start != std::string::npos;
 	}
 
@@ -32,7 +33,8 @@ public:
 	@return the next token. If there are no more
 	tokens, an empty string is returned
 	*/
-	std::string next_token() {
+	std::string next_token()
+	{
 		// Make sure there is a next token
 		if (!has_more_tokens())
 			return "";
@@ -50,7 +52,8 @@ private:
 	/** Position start and end so that start is the index of the start
 	of the next token and end is the end.
 	*/
-	void find_next() {
+	void find_next()
+	{
 		// Find the first character that is not a delimeter
 		/*<snippet id="1" omit="false">*/
 		start = the_source.find_first_not_of(the_delim, end);
@@ -70,6 +73,5 @@ private:
 	/** The index of the end of the next token*/
 	size_t end;
 };
-
 
 #endif
