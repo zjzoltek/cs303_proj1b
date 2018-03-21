@@ -52,6 +52,8 @@ public:
 		case DateFormat::Standard:
 			return to_string(year) + "/" + to_string(month) + "/" + to_string(day);
 		}
+
+		return to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 	}
 
 	/* parse a date according to a given format*/
@@ -311,6 +313,14 @@ public:
 	bool operator >=(const Date other) const
 	{
 		return this->operator>(other) || this->operator==(other);
+	}
+
+	void operator =(const Date& other)
+	{
+		this->day = other.day;
+		this->month = other.month;
+		this->year = other.year;
+		this->format = other.format;
 	}
 
 	int getYear() { return year; }
