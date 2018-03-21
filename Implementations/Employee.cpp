@@ -36,16 +36,15 @@ uint32_t Employee::getID()
 	return _id;
 }
 
+std::string Employee::getDesiredBook()
+{
+	return _desiredBook;
+}
+
 //Return is emyploee is holding book
 bool Employee::isHoldingBook()
 {
 	return this->_holdingBook;
-}
-
-//Set name of employee
-void Employee::setEmployeeName(std::string& _name)
-{
-	this->_empName = _name;
 }
 
 //Set time employee has to wait
@@ -75,4 +74,10 @@ void Employee::requestBook(std::string& nameOfBook)
 bool Employee::operator<(const Employee& rhs) const
 {
 	return (_totalRetainTime - _waitTime) < (rhs._totalRetainTime - rhs._waitTime);
+}
+
+void Employee::tick()
+{
+	if (_holdingBook) _totalRetainTime += 1;
+	else _waitTime += 1;
 }
