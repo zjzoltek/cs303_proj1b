@@ -11,7 +11,9 @@ class Book;
 #include "Employee.h"
 #include "PriorityQueue.h"
 
+//Constant for the max amount of ticks from the last pass on date or circulation start date a future pass on date can be
 #define MAX_POSSIBLE_CIRCULATION_TIME 3
+//Constant for the max amount of ticks a circulation start date can be from the offical system start date given to Library.h to start the system
 #define MAX_POSSIBLE_CIRCULATION_DELAY 3
 
 #define RANDOM_NUMBER(low, high) low + rand() / (RAND_MAX / (high - low + 1) + 1)

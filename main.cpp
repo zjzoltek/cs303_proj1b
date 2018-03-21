@@ -2,6 +2,7 @@
 
 int main()
 {
+	//Date can be anything you want it to be. 
 	Date startDate = Date(2018, 3, 20);
 
 	Library lib(startDate);
@@ -14,6 +15,7 @@ int main()
 	lib.addEmployee("Joe", "Moby Dick");
 	lib.addEmployee("Smoe", "Moby Dick");
 
+	//Uncomment if you wish for a more complicated simulation
 	/*lib.addEmployee("Fi", "My Mom and Me");
 	lib.addEmployee("Phi", "My Mom and Me");
 	lib.addEmployee("Pho", "My Mom and Me");

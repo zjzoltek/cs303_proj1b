@@ -72,11 +72,13 @@ void Library::start()
 {
 	assert(!_books.empty() && !_employees.empty() && "The system needs at least one employee and book in order to function!");
 
+	//Put the employees in the right book queues based on their desired book
 	for (size_t i = 0; i < _employees.size(); i++)
 	{
 		_books[_employees[i].getDesiredBook()].pushEmployee(_employees[i]);
 	}
 
+	//Output some useful information
 	std::cout << "Employees have been assigned! We have a total of " << _employees.size() << " employees" << std::endl << std::endl;
 
 	uint32_t minTime = _employees.size(), maxTime = _employees.size() * MAX_POSSIBLE_CIRCULATION_TIME;
@@ -91,6 +93,8 @@ void Library::start()
 		auto itr = _books.begin();
 		while (itr != _books.end())
 		{
+			//If the book still has people remaining (therefore is not finished), give it the current date
+			//and call its tick method
 			if (!itr->second.isFinished())
 			{
 				itr->second.setCurrentDate(_currentDate);

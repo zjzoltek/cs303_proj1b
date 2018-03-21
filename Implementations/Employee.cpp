@@ -4,7 +4,7 @@
 
 #include "../Headers/Employee.h"
 
-Employee::Employee(std::string name, uint32_t id, std::string& desiredBook)
+Employee::Employee(std::string name, uint32_t id, std::string desiredBook)
 {
 	this->_empName = name;
 	this->_waitTime = 0;

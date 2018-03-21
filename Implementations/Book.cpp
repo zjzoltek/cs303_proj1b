@@ -118,6 +118,9 @@ void Book::tick()
 		{
 			if (_empQueue.is_empty())
 			{
+				//The user is leaving the queue for good and we are losing reference to them, so we go ahead and reset their wait and retain 
+				//times in case they enter another queue. However, this book will keep a record of how much time they retained this book in particular,
+				//so if they re-enter the queue, their retain time will be re-assigned
 				_retainTimes[_bookUser->getID()] = _bookUser->getTotalRetainTime();
 				_bookUser->setTotalRetainTime(0);
 				_bookUser->setWaitTime(0);
@@ -128,6 +131,9 @@ void Book::tick()
 				return;
 			}
 
+			//The user is leaving the queue for good and we are losing reference to them, so we go ahead and reset their wait and retain 
+			//times in case they enter another queue. However, this book will keep a record of how much time they retained this book in particular,
+			//so if they re-enter the queue, their retain time will be re-assigned
 			_retainTimes[_bookUser->getID()] = _bookUser->getTotalRetainTime();
 			_bookUser->setTotalRetainTime(0);
 			_bookUser->setWaitTime(0);

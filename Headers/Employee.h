@@ -17,7 +17,7 @@ private:
 	
 	bool _holdingBook;
 public:
-	Employee(std::string name, uint32_t id, std::string& desiredBook);
+	Employee(std::string name, uint32_t id, std::string desiredBook);
 
 	std::string getDesiredBook();
 	std::string getEmployeeName();

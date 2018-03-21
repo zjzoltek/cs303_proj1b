@@ -12,7 +12,10 @@ template<class _T>
 class PriorityQueue
 {
 private:
+	//The underlying structure of our priority queue
 	std::vector<_T> _container;
+	//Reference to a function that will help sort the underlying vector to ensure
+	//highest priority goes first
 	std::function <bool(_T, _T)> _comparator;
 public:
 	PriorityQueue();
@@ -38,7 +41,6 @@ public:
 	typename std::vector<_T>::iterator end();
 };
 
-#include "../Headers/PriorityQueue.h"
 
 template<class _T>
 void PriorityQueue<_T>::sort_internal_heap()
