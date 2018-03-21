@@ -28,7 +28,6 @@ private:
 	Date _currentDate;
 	std::vector<Employee> _employees;
 	std::map<std::string, Book> _books;
-	bool _isRunning;
 	
 	void printBookSummary();
 public:
